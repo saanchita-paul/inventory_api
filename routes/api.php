@@ -43,3 +43,5 @@ Route::get('/products', function (Request $request) {
        ->paginate($request->get('per_page'));
 
 });
+
+

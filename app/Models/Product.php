@@ -15,4 +15,14 @@ class Product extends Model
         'price',
         'image'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function currentStock()
+    {
+        return $this->hasOne(CurrentStock::class);
+    }
 }
