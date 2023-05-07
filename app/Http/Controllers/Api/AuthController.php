@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Services\User\UserLoginService;
 use App\Services\User\UserLogoutService;
 use App\Services\User\UserRegisterService;
+use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -30,10 +31,11 @@ class AuthController extends Controller
             $createUser = new UserRegisterService();
             return $createUser->userRegister($request);
         }
-        catch (Exception $exception) {
-            \Log::error($exception->getTraceAsString());
-            \Log::error($exception->getMessage());
-            return $this->sendErrorResponse($exception->getMessage());
+        catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
         }
     }
 
@@ -48,10 +50,11 @@ class AuthController extends Controller
             $login = new UserLoginService();
             return $login->userLogin($request);
         }
-        catch (Exception $exception) {
-            \Log::error($exception->getTraceAsString());
-            \Log::error($exception->getMessage());
-            return $this->sendErrorResponse($exception->getMessage());
+        catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
         }
     }
 
@@ -66,10 +69,11 @@ class AuthController extends Controller
             $logout = new UserLogoutService();
             return $logout->userLogout();
         }
-        catch (Exception $exception) {
-            \Log::error($exception->getTraceAsString());
-            \Log::error($exception->getMessage());
-            return $this->sendErrorResponse($exception->getMessage());
+        catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
         }
     }
 }

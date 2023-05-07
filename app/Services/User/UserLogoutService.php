@@ -19,10 +19,18 @@ class UserLogoutService
      */
     public function userLogout()
     {
-        auth()->user()->currentAccessToken()->delete();
-        return response ([
-            'message' =>'Successfully Logged Out'
-        ]);
+        try {
+            auth()->user()->currentAccessToken()->delete();
+            return response ([
+                'message' =>'Successfully Logged Out'
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+
     }
 
 }

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Product\ProductController;
+use App\Http\Controllers\Api\Purchase\PurchaseController;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +47,13 @@ Route::get('/products', function (Request $request) {
 });
 
 
+Route::group(['prefix' => 'product'], function () {
+    Route::post('/create', [ProductController::class, 'createProduct']);
+    Route::get('/view/{id}', [ProductController::class, 'viewProduct']);
+    Route::get('/list', [ProductController::class, 'productList']);
+});
+
+Route::group(['prefix' => 'purchase'], function () {
+    Route::post('/create', [PurchaseController::class, 'createPurchase']);
+    Route::get('/list', [PurchaseController::class, 'purchaseList']);
+});
