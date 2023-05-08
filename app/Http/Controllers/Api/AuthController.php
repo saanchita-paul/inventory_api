@@ -4,16 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\User\UserLoginRequest;
 use App\Http\Requests\User\UserRegisterRequest;
-use App\Models\User;
 use App\Services\User\UserLoginService;
 use App\Services\User\UserLogoutService;
 use App\Services\User\UserRegisterService;
-use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 /**
  *
@@ -32,6 +28,7 @@ class AuthController extends Controller
             return $createUser->userRegister($request);
         }
         catch (\Throwable $th) {
+            Log::error('An error occurred: ',$th->getMessage());
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()
@@ -51,6 +48,7 @@ class AuthController extends Controller
             return $login->userLogin($request);
         }
         catch (\Throwable $th) {
+            Log::error('An error occurred: ',$th->getMessage());
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()
@@ -70,6 +68,7 @@ class AuthController extends Controller
             return $logout->userLogout();
         }
         catch (\Throwable $th) {
+            Log::error('An error occurred: ',$th->getMessage());
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()

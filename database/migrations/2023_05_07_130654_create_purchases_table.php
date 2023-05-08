@@ -19,6 +19,8 @@ class CreatePurchasesTable extends Migration
             $table->date('date')->nullable();
             $table->string('status')->nullable();
             $table->string('invoice_no')->nullable();
+            $table->text('note');
+            $table->integer('grant_total');
             $table->timestamps();
         });
     }

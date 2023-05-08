@@ -6,15 +6,16 @@ namespace App\Services\User;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
+
 
 /**
- *
+ * User Registration Service
  */
 class UserRegisterService
 {
     /**
-     * User Registration Service
+     * Register new user
      * @param Request $data
      * @return \Illuminate\Http\JsonResponse
      */
@@ -34,6 +35,7 @@ class UserRegisterService
             ], 200);
 
         } catch (\Throwable $th) {
+            Log::error('An error occurred: ',$th->getMessage());
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()

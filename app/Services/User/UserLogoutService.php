@@ -3,18 +3,17 @@
 namespace App\Services\User;
 
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+
+use Illuminate\Support\Facades\Log;
+
 
 /**
- *
+ * User Logout Service
  */
 class UserLogoutService
 {
     /**
-     * User Logout Service
+     * logs out the currently authenticated user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function userLogout()
@@ -25,6 +24,7 @@ class UserLogoutService
                 'message' =>'Successfully Logged Out'
             ]);
         } catch (\Throwable $th) {
+            Log::error('An error occurred: ',$th->getMessage());
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()

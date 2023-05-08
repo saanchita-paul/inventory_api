@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CurrentStock extends Model
+class Stock extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,6 @@ class CurrentStock extends Model
         'product_id',
         'quantity',
         'unit',
-        'note'
     ];
 
     public function product()

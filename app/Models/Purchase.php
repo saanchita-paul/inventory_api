@@ -13,6 +13,8 @@ class Purchase extends Model
         'supplier_name',
         'date',
         'status',
-        'invoice_no'
+        'invoice_no',
+        'note',
+        'grant_total'
     ];
 }

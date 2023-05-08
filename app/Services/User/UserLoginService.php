@@ -6,14 +6,15 @@ namespace App\Services\User;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 /**
- *
+ * User Login Service
  */
 class UserLoginService
 {
     /**
-     * User Login Service
+     * login authenticated user
      * @param Request $data
      * @return \Illuminate\Http\JsonResponse
      */
@@ -37,6 +38,7 @@ class UserLoginService
             ], 200);
 
         } catch (\Throwable $th) {
+            Log::error('An error occurred: ',$th->getMessage());
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()
