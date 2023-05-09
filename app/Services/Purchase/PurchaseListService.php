@@ -25,6 +25,7 @@ class PurchaseListService
         try {
             return Purchase::query()
                 ->where('supplier_name', 'like', "%{$data->get('search')}%")
+                ->orderBy('id', 'desc')
                 ->paginate($data->get('per_page'));
         } catch (\Throwable $th) {
             Log::error('An error occurred: ',$th->getMessage());

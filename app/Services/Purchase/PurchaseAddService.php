@@ -24,39 +24,59 @@ class PurchaseAddService
     public function addPurchase(Request $data)
     {
         try {
-            $product = Product::findOrFail($data->product_id);
+            $formattedData = $data->toArray();
+            $productIds = [];
 
-            // Update the stock quantity
-            $stock = Stock::findOrFail($data->product_id);
-            $stock->quantity += $data->quantity;
-            $stock->save();
+            foreach ($formattedData['products'] as $product) {
+                $productIds[] = $product['id'];
+            }
+            $products = Product::whereIn('id', $productIds)->get();
+
+            // Calculate the total price based on product prices and stock quantities
+            $totalPrice = 0;
+            foreach ($products as $product) {
+                $stock = Stock::findOrFail($product->id);
+                $totalPrice += $product->price * $stock->quantity;
+            }
 
             // Create a new purchase record
             $purchase = new Purchase();
             $purchase->date = $data->date;
             $purchase->invoice_no = $data->invoice_no;
             $purchase->supplier_name = $data->supplier_name;
-            $purchase->grant_total = $data->grant_total;
+            $purchase->grant_total = $totalPrice;
             $purchase->note = $data->note;
             $purchase->status = $data->status;
             $purchase->save();
-            $productPurchase = ProductPurchase::where('product_id', $product->id)
-                ->where('purchase_id', $purchase->id)
-                ->first();
-            if ($productPurchase) {
-                // If the product purchase record already exists, update it
-                $productPurchase->product_rate = $data->grant_total;
-                $productPurchase->product_quantity += $data->quantity;
-                $productPurchase->save();
-            } else {
-                // Create a new product purchase record
-                $productPurchase = new ProductPurchase();
-                $productPurchase->product_id = $product->id;
-                $productPurchase->purchase_id = $purchase->id;
-                $productPurchase->product_rate = $data->grant_total;
-                $productPurchase->product_quantity = $data->quantity;
-                $productPurchase->save();
+
+            // Update the stock quantities and create product purchase records
+            foreach ($formattedData['products'] as $product) {
+                $product = Product::findOrFail($product['id']);
+
+                // Update the stock quantity
+                $stock = Stock::findOrFail($product->id);
+                $stock->quantity += $data->quantity;
+                $stock->save();
+
+                $productPurchase = ProductPurchase::whereIn('product_id', $productIds)
+                    ->where('purchase_id', $purchase->id)
+                    ->first();
+                if ($productPurchase) {
+                    // If the product purchase record already exists, update it
+                    $productPurchase->product_rate = $product->price;
+                    $productPurchase->product_quantity += $data->quantity;
+                    $productPurchase->save();
+                } else {
+                    // Create a new product purchase record
+                    $productPurchase = new ProductPurchase();
+                    $productPurchase->product_id = $product->id;
+                    $productPurchase->purchase_id = $purchase->id;
+                    $productPurchase->product_rate = $product->price;
+                    $productPurchase->product_quantity = $data->quantity;
+                    $productPurchase->save();
+                }
             }
+
             return response()->json([
                 'status' => 'success',
                 'message' => 'Purchase created successfully.',

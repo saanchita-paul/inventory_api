@@ -25,6 +25,7 @@ class ProductListService
             return Product::query()
                 ->with('category', 'stock')
                 ->where('product_name', 'like', "%{$data->get('search')}%")
+                ->orderBy('id', 'desc')
                 ->paginate($data->get('per_page'));
         } catch (\Throwable $th) {
             Log::error('An error occurred: ',$th->getMessage());

@@ -29,13 +29,14 @@ class ProductAddService
             $product->image = $data->image;
             $product->save();
             // Create stock for the product
-            $stock = new Stock();
-            $stock->product_id = $product->id;
-            $stock->quantity = 0;
-            $stock->unit = 'kg'; // or any other default unit you want
-            $stock->save();
+            $stock = $this->addStock($product->id, $data->unit);
 
-            return $product;
+            return response()->json([
+                'status' => true,
+                'product' => $product,
+                'stock' => $stock
+            ]);
+
         } catch (\Throwable $th) {
             Log::error('An error occurred: ',$th->getMessage());
             return response()->json([
@@ -43,6 +44,23 @@ class ProductAddService
                 'message' => $th->getMessage()
             ], 500);
         }
+    }
+
+
+    /**
+     * @param $productId
+     * @param $unit
+     * @return Stock
+     */
+    public function addStock($productId, $unit)
+    {
+        $product = Product::findOrFail($productId);
+        $stock = new Stock();
+        $stock->product_id = $product->id;
+        $stock->quantity = 0;
+        $stock->unit = $unit;
+        $stock->save();
+        return $stock;
     }
 
 }

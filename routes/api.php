@@ -57,3 +57,8 @@ Route::group(['prefix' => 'purchase'], function () {
     Route::post('/create', [PurchaseController::class, 'createPurchase']);
     Route::get('/list', [PurchaseController::class, 'purchaseList']);
 });
+
+Route::get('/categories', function () {
+    return \App\Models\Category::get();
+
+});
