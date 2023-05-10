@@ -75,4 +75,21 @@ class AuthController extends Controller
             ], 500);
         }
     }
+
+    /**
+     * @return \Illuminate\Contracts\Auth\Authenticatable|\Illuminate\Http\JsonResponse|null
+     */
+    public function getUser()
+    {
+        try {
+            return auth()->user();
+        }
+        catch (\Throwable $th) {
+            Log::error('An error occurred: ',$th->getMessage());
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
 }

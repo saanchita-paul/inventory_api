@@ -28,6 +28,9 @@ class PurchaseRequest extends FormRequest
             'date' => 'nullable',
             'status' => 'nullable',
             'invoice_no' => 'nullable',
+            'quantity' => 'nullable',
+            'note' => 'nullable',
+            'products' => 'required|array',
         ];
     }
 }

@@ -3,8 +3,6 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\Product\ProductController;
 use App\Http\Controllers\Api\Purchase\PurchaseController;
-use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +27,30 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
      * user logout
      */
     Route::post('/auth/logout',[AuthController::class,'logoutUser']);
+    /**
+     * get user
+     */
+    Route::get('/user', [AuthController::class,'getUser']);
+    /**
+     * product
+     */
+    Route::group(['prefix' => 'product'], function () {
+        Route::post('/create', [ProductController::class, 'createProduct']);
+        Route::get('/view/{id}', [ProductController::class, 'viewProduct']);
+        Route::get('/list', [ProductController::class, 'productList']);
+        Route::get('/categories',[ProductController::class, 'categoryList']);
+    });
+    /**
+     * purchase
+     */
+    Route::group(['prefix' => 'purchase'], function () {
+        Route::post('/create', [PurchaseController::class, 'createPurchase']);
+        Route::get('/list', [PurchaseController::class, 'purchaseList']);
+    });
+
+
+
+
 });
 /**
  * user register
@@ -39,26 +61,5 @@ Route::post('/auth/register', [AuthController::class, 'createUser']);
  */
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 
-Route::get('/products', function (Request $request) {
-    return Product::query()
-            ->where('product_name', 'like', "%{$request->get('search')}%")
-       ->paginate($request->get('per_page'));
-
-});
 
 
-Route::group(['prefix' => 'product'], function () {
-    Route::post('/create', [ProductController::class, 'createProduct']);
-    Route::get('/view/{id}', [ProductController::class, 'viewProduct']);
-    Route::get('/list', [ProductController::class, 'productList']);
-});
-
-Route::group(['prefix' => 'purchase'], function () {
-    Route::post('/create', [PurchaseController::class, 'createPurchase']);
-    Route::get('/list', [PurchaseController::class, 'purchaseList']);
-});
-
-Route::get('/categories', function () {
-    return \App\Models\Category::get();
-
-});
