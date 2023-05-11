@@ -134,418 +134,135 @@ The API endpoints and their usage are documented below:
     
  </details>
  
+ 
  <details>
-  <summary>Login</summary>
+  <summary>Get User</summary>
+    
+  - Endpoint:
+    
+    ```http
+    GET api/user
+    
+    ```
+    
+  - Description:
+      ```
+      This API endpoint retrieves information about all authenticated users.
+      ```
+    
+ </details>
+ 
+ 
+ <details>
+  <summary>Add Product</summary>
+    
+  - Endpoint:
+    
+    ```http
+    POST api/product/create
+    
+    ```
+    
+  - Description:
+      ```
+      This API endpoint allows the addition of a new product to the database. With each product one stock will be added and by default stock quantity is zero
+      ```
+    
+ </details>
 
-  - Endpoint: 
+
+ <details>
+  <summary>Product List</summary>
     
-        ```http
-        POST /api/auth/login
-        ```
-  - Request body:
+  - Endpoint:
     
-      ```json
-        {
-          "email": "admin@sokrio.com",
-          "password": "12345678"
-        }
+    ```http
+    GET /api/product/list?per_page={per_page}&search={search}
+    
+    ```
+    
+  - Description:
       ```
-  - Response:
-    
-      ```json
-        {
-          {
-        "status": true,
-        "message": "User Logged In Successfully",
-        "user": {
-            "id": 1,
-            "name": "admin",
-            "email": "admin@sokrio.com",
-            "email_verified_at": null,
-            "created_at": "2023-05-07T10:22:42.000000Z",
-            "updated_at": "2023-05-07T10:22:42.000000Z"
-        },
-        "token": "21|zib5Zy7MKmdA4jLWVH4iCy0wgi33xiRT4tdBhX6N"
-        }
-          }
-      
+      This API endpoint allows the user to retrieve a list of all products from the database. The user can apply filters to the results by adding query parameters to the endpoint. The per_page parameter specifies the number of products to be returned per page, and the search parameter allows the user to search for products by their name.
       ```
-    </details>
+    
+ </details>
+
+
+  <details>
+  <summary>Product Details</summary>
+    
+  - Endpoint:
+    
+    ```http
+    GET /api/product/view/{id}
+    
+    ```
+    
+  - Description:
+      ```
+      This API endpoint allows the user to retrieve the details of a specific product based on its ID.
+      ```
+    
+ </details>
+
+
+  <details>
+  <summary>Category List</summary>
+    
+  - Endpoint:
+    
+    ```http
+    GET api/product/categories
+    
+    ```
+    
+  - Description:
+      ```
+      This API endpoint allows the user to retrieve a list of all categories of products available.
+      ```
+    
+ </details>
+ 
+ 
+ 
+ <details>
+  <summary>Add Purchase</summary>
+    
+  - Endpoint:
+    
+    ```http
+    POST api/purchase/create
+    
+    ```
+    
+  - Description:
+      ```
+      This API endpoint allows the user to add a purchase record, updating the stock quantity and price of multiple products.
+      ```
+    
+ </details>
+
+
+
+<details>
+  <summary>Purchase List</summary>
+    
+  - Endpoint:
+    
+    ```http
+    POST /api/purchase/list?per_page={per_page}&search={search}
+    
+    ```
+    
+  - Description:
+      ```
+     This API endpoint allows the user to retrieve a list of all purchases from the database. The user can apply filters to the results by adding query parameters to the       endpoint. The per_page parameter specifies the number of purchases to be returned per page, and the search parameter allows the user to search for purchases by the         supplier name.
+      ```
+    
+ </details>
+ 
   
-  - Get User
-  - Endpoint: POST api/user
-  - Response:
-  ```
-    {
-    "id": 1,
-    "name": "admin",
-    "email": "admin@sokrio.com",
-    "email_verified_at": null,
-    "created_at": "2023-05-07T10:22:42.000000Z",
-    "updated_at": "2023-05-07T10:22:42.000000Z"
-    }
-  ```
-  
-  - Add Product
-  - Endpoint: POST api/user
-  - Headers:
-  ```
-    Authorization:Bearer 16|Mpa45CgTqXyZmc0Aix0BZPvfcCftqzDT3pFChJiM
-    Accept:application/json
-  ```
-   - Request body:
-  ```
-    {
-    "product_name": "Product1",
-    "category_id": 2,
-    "description": "Lorem ipsum",
-    "price": 200,
-    "image": "test.jpg",
-    "unit": "gm"
-    }
-  ```
-  - Response:
-  ```
-    {
-    "status": true,
-        "product": {
-            "product_name": "Product1",
-            "category_id": 2,
-            "description": "Lorem ipsum",
-            "price": 200,
-            "image": "test.jpg",
-            "updated_at": "2023-05-11T06:27:57.000000Z",
-            "created_at": "2023-05-11T06:27:57.000000Z",
-            "id": 242
-        },
-        "stock": {
-            "product_id": 242,
-            "quantity": 0,
-            "unit": "gm",
-            "updated_at": "2023-05-11T06:27:57.000000Z",
-            "created_at": "2023-05-11T06:27:57.000000Z",
-            "id": 24
-        }
-    }
-  ```
-  
-  - Product List
-  - Endpoint: GET api/product/list?per_page=2&search=Product1
-  - Headers:
-  ```
-    Authorization:Bearer 16|Mpa45CgTqXyZmc0Aix0BZPvfcCftqzDT3pFChJiM
-    Accept:application/json
-  ```
-  - Response:
-  ```
-    {
-    "current_page": 1,
-    "data": [
-        {
-            "id": 242,
-            "product_name": "Product1",
-            "category_id": 2,
-            "description": "Lorem ipsum",
-            "price": 200,
-            "image": "test.jpg",
-            "created_at": "2023-05-11T06:27:57.000000Z",
-            "updated_at": "2023-05-11T06:27:57.000000Z",
-            "category": {
-                "id": 2,
-                "category_title": "Non.",
-                "created_at": "2023-05-08T06:04:27.000000Z",
-                "updated_at": "2023-05-08T06:04:27.000000Z"
-            },
-            "stock": {
-                "id": 24,
-                "product_id": 242,
-                "quantity": 0,
-                "unit": "gram",
-                "created_at": "2023-05-11T06:27:57.000000Z",
-                "updated_at": "2023-05-11T06:27:57.000000Z"
-            }
-        }
-    ],
-    "first_page_url": "http://127.0.0.1:8000/api/product/list?page=1",
-    "from": 1,
-    "last_page": 7,
-    "last_page_url": "http://127.0.0.1:8000/api/product/list?page=7",
-    "links": [
-        {
-            "url": null,
-            "label": "&laquo; Previous",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/product/list?page=1",
-            "label": "1",
-            "active": true
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/product/list?page=2",
-            "label": "2",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/product/list?page=3",
-            "label": "3",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/product/list?page=4",
-            "label": "4",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/product/list?page=5",
-            "label": "5",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/product/list?page=6",
-            "label": "6",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/product/list?page=7",
-            "label": "7",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/product/list?page=2",
-            "label": "Next &raquo;",
-            "active": false
-        }
-    ],
-    "next_page_url": "http://127.0.0.1:8000/api/product/list?page=2",
-    "path": "http://127.0.0.1:8000/api/product/list",
-    "per_page": "2",
-    "prev_page_url": null,
-    "to": 2,
-    "total": 14
-    }
-  ```
-  
-  - Product Details
-  - Endpoint: GET api/product/view/1
-  - Headers:
-  ```
-    Authorization:Bearer 16|Mpa45CgTqXyZmc0Aix0BZPvfcCftqzDT3pFChJiM
-    Accept:application/json
-  ```
-  - Response:
-  ```
-    {
-        "id": 1,
-        "product_name": "Debitis dolore.",
-        "category_id": 6,
-        "description": "Debitis recusandae harum maxime dolorum beatae dolorum.",
-        "price": 10,
-        "image": "https://via.placeholder.com/640x480.png/0077cc?text=ratione",
-        "created_at": "2023-05-06T12:50:48.000000Z",
-        "updated_at": "2023-05-10T18:36:38.000000Z",
-        "category": {
-            "id": 6,
-            "category_title": "Sit.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        }
-    }
-  ```
-  
-   - Category List
-  - Endpoint: GET api/product/categories
-  - Headers:
-  ```
-    Authorization:Bearer 16|Mpa45CgTqXyZmc0Aix0BZPvfcCftqzDT3pFChJiM
-    Accept:application/json
-  ```
-  - Response:
-  ```
-   [
-        {
-            "id": 1,
-            "category_title": "Reiciendis.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        },
-        {
-            "id": 2,
-            "category_title": "Non.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        },
-        {
-            "id": 3,
-            "category_title": "Non.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        },
-        {
-            "id": 4,
-            "category_title": "Nihil.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        },
-        {
-            "id": 5,
-            "category_title": "Amet.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        },
-        {
-            "id": 6,
-            "category_title": "Sit.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        },
-        {
-            "id": 7,
-            "category_title": "Omnis.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        },
-        {
-            "id": 8,
-            "category_title": "Consequatur.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        },
-        {
-            "id": 9,
-            "category_title": "Facilis.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        },
-        {
-            "id": 10,
-            "category_title": "Qui.",
-            "created_at": "2023-05-08T06:04:27.000000Z",
-            "updated_at": "2023-05-08T06:04:27.000000Z"
-        }
-    ]
-  ```
-  
-  - Add Purchase
-  - Endpoint: POST api/purchase/create
-  - Headers:
-  ```
-    Authorization:Bearer 16|Mpa45CgTqXyZmc0Aix0BZPvfcCftqzDT3pFChJiM
-    Accept:application/json
-  ```
-   - Request body:
-  ```
-    {
-        "date": "2023-12-12",
-        "invoice_no": 1234,
-        "supplier_name": "supplier1",
-        "note": "this is a note",
-        "products": [
-            {
-                "id": 1,
-                "quantity": 2,
-                "price": 10
-            },
-            {
-                "id": 2,
-                "quantity": 3,
-                "price": 10
-            }
-        ]
-    }
-  ```
-  - Response:
-  ```
-   {
-    "status": "success",
-    "message": "Purchase created successfully."
-    }
-  ```
-  
-  - Purchase List
-  - Endpoint: POST api/purchase/list?per_page=1&search=supplier 
-  - Headers:
-  ```
-    Authorization:Bearer 16|Mpa45CgTqXyZmc0Aix0BZPvfcCftqzDT3pFChJiM
-    Accept:application/json
-  ```
-  
-  - Response:
-  ```
-  {
-    "current_page": 1,
-    "data": [
-        {
-            "id": 90,
-            "supplier_name": "supplier1",
-            "date": "2023-12-12",
-            "status": null,
-            "invoice_no": "1234",
-            "note": "this is a note",
-            "grant_total": 50,
-            "created_at": "2023-05-11T06:44:26.000000Z",
-            "updated_at": "2023-05-11T06:44:26.000000Z"
-        }
-    ],
-    "first_page_url": "http://127.0.0.1:8000/api/purchase/list?page=1",
-    "from": 1,
-    "last_page": 7,
-    "last_page_url": "http://127.0.0.1:8000/api/purchase/list?page=7",
-    "links": [
-        {
-            "url": null,
-            "label": "&laquo; Previous",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/purchase/list?page=1",
-            "label": "1",
-            "active": true
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/purchase/list?page=2",
-            "label": "2",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/purchase/list?page=3",
-            "label": "3",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/purchase/list?page=4",
-            "label": "4",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/purchase/list?page=5",
-            "label": "5",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/purchase/list?page=6",
-            "label": "6",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/purchase/list?page=7",
-            "label": "7",
-            "active": false
-        },
-        {
-            "url": "http://127.0.0.1:8000/api/purchase/list?page=2",
-            "label": "Next &raquo;",
-            "active": false
-        }
-    ],
-    "next_page_url": "http://127.0.0.1:8000/api/purchase/list?page=2",
-    "path": "http://127.0.0.1:8000/api/purchase/list",
-    "per_page": "1",
-    "prev_page_url": null,
-    "to": 1,
-    "total": 7
-    }
-  ```
   <details>
   <summary>Logout</summary>
     
@@ -555,14 +272,10 @@ The API endpoints and their usage are documented below:
     POST /api/auth/logout
     ```
     
-  - Response:
-  ```
-     {
-        "status": true,
-        "message": "User Logged Out Successfully",
-     }
-
-  ```
+   - Description:
+      ```
+        This API endpoint allows the user to log out from the application. When invoked, the access token associated with the user will be invalidated and removed.
+      ```
   </details>
  
   
