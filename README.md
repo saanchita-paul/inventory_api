@@ -57,7 +57,7 @@ DB_PASSWORD=your_database_password
 ```
 - Migrate the database:
 
-```
+```bash
 php artisan migrate
 ```
 
