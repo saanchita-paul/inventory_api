@@ -100,8 +100,13 @@ GET /api/auth/login
 
 The API endpoints and their usage are documented below:
 
-- Registration
-  - Endpoint: POST api/auth/register
+<details>
+  <summary>Registration</summary>
+  - Endpoint:
+    
+    ```http
+    POST api/auth/register
+    ```
   - Request body:
   ```
     {
@@ -118,6 +123,8 @@ The API endpoints and their usage are documented below:
     "token": "22|tYGcMDte4F6AyBfPckOAhMqJULBjJSSfONgKEnz7"
     }
   ```
+    
+ </details>
 
 - Login
   - Endpoint: POST api/auth/login
