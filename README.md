@@ -522,3 +522,5 @@ The API endpoints and their usage are documented below:
      }
 
   ```
+  
+  [Check Postman API documentation]([http://localhost:5000/docs/](https://documenter.getpostman.com/view/15919922/2s93ebSqft))
