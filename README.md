@@ -94,9 +94,11 @@ Please ensure the Bearer token is provided in the appropriate manner to authenti
 POST /api/auth/login
 ```
 ### Header
-| Key | Value |
-| :--- | :--- | 
-| Authorization | Bearer<token> |
+
+```
+    Authorization:Bearer <token>
+    Accept:application/json
+```
 
 The API endpoints and their usage are documented below:
 
