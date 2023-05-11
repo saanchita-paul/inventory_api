@@ -135,8 +135,8 @@ The API endpoints and their usage are documented below:
   - Endpoint: 
     
         ```http
-        POST api/auth/login
-    
+        POST /api/auth/lpgin
+
         ```
   - Request body:
     
