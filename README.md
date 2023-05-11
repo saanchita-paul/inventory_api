@@ -111,7 +111,7 @@ The API endpoints and their usage are documented below:
     ```
     
   - Request body:
-  ```
+  ```json
     {
       "name": "admin@sokrio.com",
       "email": "admin@sokrio.com",
