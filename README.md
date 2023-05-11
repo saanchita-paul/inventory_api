@@ -91,7 +91,7 @@ It is essential to include the Bearer token correctly to access the protected en
 Please ensure the Bearer token is provided in the appropriate manner to authenticate your API requests effectively and securely.
 
 ```http
-GET /api/auth/login
+POST /api/auth/login
 ```
 
 | Key | Value |
@@ -105,7 +105,7 @@ The API endpoints and their usage are documented below:
   - Endpoint:
     
     ```http
-    POST api/auth/register
+    POST /api/auth/register
     ```
     
   - Request body:
