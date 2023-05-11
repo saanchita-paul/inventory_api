@@ -6,21 +6,75 @@ This repository contains the source code for an Inventory API. The API allows us
 
 The Inventory API offers the following features:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Create Item:** Users can add new items to the inventory by providing the necessary details, including the item name, description, quantity, and price.
+- **Update Item:** Existing items in the inventory can be updated by specifying the item ID and providing the updated details. Users can modify the item name, description, quantity, or price.
+- **Retrieve Item:** Users can retrieve the details of a specific item by providing its ID. The API returns the item's name, description, quantity, and price.
+- **Delete Item:** Items can be deleted from the inventory by specifying their ID. Once deleted, the item will no longer be accessible through the API.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+To set up the Inventory API on your local machine, follow these steps:
+
+- Clone the repository using the following command:
+
+```
+git clone https://github.com/saanchita-paul/inventory_api.git
+```
+
+- Navigate to the cloned directory:
+
+```
+cd inventory_api
+```
+- Install dependencies:
+
+```
+composer install
+```
+
+- Copy the .env.example file to .env:
+
+```
+cp .env.example .env
+```
+- Generate an application key:
+
+```
+php artisan key:generate
+```
+
+- Configure the database in the .env file:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_username
+DB_PASSWORD=your_database_password
+```
+- Migrate the database:
+
+```
+php artisan migrate
+```
+
+- Run the following command to seed the database:
+
+```
+php artisan db:seed
+```
+
+- Start the development server:
+
+```
+php artisan serve
+```
+
+- Visit http://localhost:8000 in your web browser to use the application.
+
 
 ## Laravel Sponsors
 
