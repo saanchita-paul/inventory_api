@@ -522,9 +522,3 @@ The API endpoints and their usage are documented below:
      }
 
   ```
-
-
-## Contributing
-
-Contributions to the Inventory API are welcome. To contribute, please fork the repository, create a new branch, make your changes, and submit a pull request.
-
