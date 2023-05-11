@@ -134,9 +134,8 @@ The API endpoints and their usage are documented below:
 
   - Endpoint: 
     
-        ```http
+        ```
         POST /api/auth/lpgin
-
         ```
   - Request body:
     
@@ -164,7 +163,7 @@ The API endpoints and their usage are documented below:
         "token": "21|zib5Zy7MKmdA4jLWVH4iCy0wgi33xiRT4tdBhX6N"
         }
           }
-        }
+      
       ```
     </details>
   
