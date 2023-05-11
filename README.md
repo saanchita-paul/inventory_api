@@ -524,3 +524,15 @@ The API endpoints and their usage are documented below:
   ```
   
   [Check Postman API Documentation](https://documenter.getpostman.com/view/15919922/2s93ebSqft)
+  
+  <details>
+  <summary>Section 1</summary>
+  
+  Content of section 1 goes here.
+  </details>
+
+<details>
+  <summary>Section 2</summary>
+  
+  Content of section 2 goes here.
+</details>
