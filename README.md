@@ -112,8 +112,7 @@ The API endpoints and their usage are documented below:
     
   - Description:
       ```
-         This API endpoint allows users to register and create an account.
-        
+      This API endpoint allows users to register and create an account.
       ```
     
  </details>
