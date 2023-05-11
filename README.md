@@ -96,8 +96,8 @@ POST /api/auth/login
 ### Header
 
 ```
-    Authorization:Bearer <token>
-    Accept:application/json
+Authorization:Bearer <token>
+Accept:application/json
 ```
 
 The API endpoints and their usage are documented below:
