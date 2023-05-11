@@ -110,21 +110,10 @@ The API endpoints and their usage are documented below:
     
     ```
     
-  - Request body:
-      ```json
-        {
-          "name": "admin@sokrio.com",
-          "email": "admin@sokrio.com",
-          "password": "12345678"
-        }
+  - Description:
       ```
-  - Response:
-      ```json
-        {
-        "status": true,
-        "message": "User Created Successfully",
-        "token": "22|tYGcMDte4F6AyBfPckOAhMqJULBjJSSfONgKEnz7"
-        }
+         This API endpoint allows users to register and create an account.
+        
       ```
     
  </details>
