@@ -57,8 +57,8 @@ DB_PASSWORD=your_database_password
 ```
 - Migrate the database:
 
-```bash
-<span style="color: blue;">php artisan migrate</span>
+```markdown
+php artisan migrate
 ```
 
 - Run the following command to seed the database:
