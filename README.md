@@ -141,7 +141,7 @@ The API endpoints and their usage are documented below:
   - Endpoint:
     
     ```http
-    GET api/user
+    GET /api/user
     
     ```
     
@@ -159,7 +159,7 @@ The API endpoints and their usage are documented below:
   - Endpoint:
     
     ```http
-    POST api/product/create
+    POST /api/product/create
     
     ```
     
@@ -213,7 +213,7 @@ The API endpoints and their usage are documented below:
   - Endpoint:
     
     ```http
-    GET api/product/categories
+    GET /api/product/categories
     
     ```
     
@@ -232,7 +232,7 @@ The API endpoints and their usage are documented below:
   - Endpoint:
     
     ```http
-    POST api/purchase/create
+    POST /api/purchase/create
     
     ```
     
@@ -262,21 +262,24 @@ The API endpoints and their usage are documented below:
     
  </details>
  
-  
-  <details>
+ 
+ <details>
   <summary>Logout</summary>
     
-    - Endpoint: 
+  - Endpoint:
     
     ```http
     POST /api/auth/logout
+    
     ```
     
-   - Description:
+  - Description:
       ```
-        This API endpoint allows the user to log out from the application. When invoked, the access token associated with the user will be invalidated and removed.
+        This API endpoint allows the user to log out from the application. When invoked, the access token associated with the user will be invalidated and removed..
       ```
-  </details>
+    
+ </details>
+ 
  
   
   
