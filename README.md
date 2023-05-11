@@ -107,6 +107,7 @@ The API endpoints and their usage are documented below:
     ```http
     POST api/auth/register
     ```
+    
   - Request body:
   ```
     {
