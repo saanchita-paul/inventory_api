@@ -509,6 +509,7 @@ The API endpoints and their usage are documented below:
   ```
   <details>
   <summary>Logout</summary>
+    
     - Endpoint: 
   ```
    POST api/auth/logout
@@ -528,7 +529,6 @@ The API endpoints and their usage are documented below:
      }
 
   ```
- 
   </details>
  
   
