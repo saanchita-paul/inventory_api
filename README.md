@@ -509,9 +509,10 @@ The API endpoints and their usage are documented below:
   ```
   <details>
   <summary>Logout</summary>
-  Endpoint: 
+    - Endpoint: 
   ```
    POST api/auth/logout
+    
   ```
     
     - Headers:
@@ -529,21 +530,9 @@ The API endpoints and their usage are documented below:
   ```
  
   </details>
-  - Logout
-  - Endpoint: POST api/auth/logout
-  - Headers:
-  ```
-    Authorization:Bearer 16|Mpa45CgTqXyZmc0Aix0BZPvfcCftqzDT3pFChJiM
-    Accept:application/json
-  ```
-  - Response:
-  ```
-     {
-        "status": true,
-        "message": "User Logged Out Successfully",
-     }
-
-  ```
+ 
+  
+  
   
   [Check Postman API Documentation](https://documenter.getpostman.com/view/15919922/2s93ebSqft)
   
