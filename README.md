@@ -128,35 +128,44 @@ The API endpoints and their usage are documented below:
       ```
     
  </details>
+ 
+ <details>
+  <summary>Login</summary>
 
-- Login
-  - Endpoint: POST api/auth/login
+  - Endpoint: 
+    
+        ```http
+        POST api/auth/login
+        ```
   - Request body:
-  ```
-    {
-      "email": "admin@sokrio.com",
-      "password": "12345678"
-    }
-  ```
+    
+      ```json
+        {
+          "email": "admin@sokrio.com",
+          "password": "12345678"
+        }
+      ```
   - Response:
-  ```
-    {
-      {
-    "status": true,
-    "message": "User Logged In Successfully",
-    "user": {
-        "id": 1,
-        "name": "admin",
-        "email": "admin@sokrio.com",
-        "email_verified_at": null,
-        "created_at": "2023-05-07T10:22:42.000000Z",
-        "updated_at": "2023-05-07T10:22:42.000000Z"
-    },
-    "token": "21|zib5Zy7MKmdA4jLWVH4iCy0wgi33xiRT4tdBhX6N"
-    }
-      }
-    }
-  ```
+    
+      ```json
+        {
+          {
+        "status": true,
+        "message": "User Logged In Successfully",
+        "user": {
+            "id": 1,
+            "name": "admin",
+            "email": "admin@sokrio.com",
+            "email_verified_at": null,
+            "created_at": "2023-05-07T10:22:42.000000Z",
+            "updated_at": "2023-05-07T10:22:42.000000Z"
+        },
+        "token": "21|zib5Zy7MKmdA4jLWVH4iCy0wgi33xiRT4tdBhX6N"
+        }
+          }
+        }
+      ```
+    </details>
   
   - Get User
   - Endpoint: POST api/user
