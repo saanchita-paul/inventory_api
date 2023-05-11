@@ -119,6 +119,23 @@ The API endpoints and their usage are documented below:
  
  <details>
   <summary>Login</summary>
+    
+  - Endpoint:
+    
+    ```http
+    POST /api/auth/login
+    
+    ```
+    
+  - Description:
+      ```
+      This API endpoint enables users to log in and obtain a Bearer token for authentication.
+      ```
+    
+ </details>
+ 
+ <details>
+  <summary>Login</summary>
 
   - Endpoint: 
     
