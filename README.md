@@ -111,21 +111,21 @@ The API endpoints and their usage are documented below:
     ```
     
   - Request body:
-  ```json
-    {
-      "name": "admin@sokrio.com",
-      "email": "admin@sokrio.com",
-      "password": "12345678"
-    }
-  ```
+      ```json
+        {
+          "name": "admin@sokrio.com",
+          "email": "admin@sokrio.com",
+          "password": "12345678"
+        }
+      ```
   - Response:
-  ```
-    {
-    "status": true,
-    "message": "User Created Successfully",
-    "token": "22|tYGcMDte4F6AyBfPckOAhMqJULBjJSSfONgKEnz7"
-    }
-  ```
+      ```json
+        {
+        "status": true,
+        "message": "User Created Successfully",
+        "token": "22|tYGcMDte4F6AyBfPckOAhMqJULBjJSSfONgKEnz7"
+        }
+      ```
     
  </details>
 
