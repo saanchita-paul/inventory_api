@@ -76,9 +76,38 @@ php artisan serve
 - Visit http://localhost:8000 in your web browser to use the application.
 
 
-## Laravel Sponsors
+## API Documentation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+The API endpoints and their usage are documented below:
+
+- Create Item
+  - Endpoint: POST /items
+  - Request body:
+  ```
+    {
+      "name": "Item Name",
+      "description": "Item Description",
+      "quantity": 10,
+      "price": 19.99
+    }
+  ```
+  - Response:
+  ```
+    {
+      "success": true,
+      "message": "Item created successfully",
+      "data": {
+        "_id": "item_id",
+        "name": "Item Name",
+        "description": "Item Description",
+        "quantity": 10,
+        "price": 19.99,
+        "createdAt": "2023-05-11T10:00:00.000Z",
+        "updatedAt": "2023-05-11T10:00:00.000Z"
+      }
+    }
+  ```
+  
 
 ### Premium Partners
 
