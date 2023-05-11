@@ -96,7 +96,7 @@ POST /api/auth/login
 ### Header
 | Key | Value |
 | :--- | :--- | 
-| Authorization | Bearer <token> |
+| Authorization | Bearer<token> |
 
 The API endpoints and their usage are documented below:
 
