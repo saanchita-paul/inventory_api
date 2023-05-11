@@ -133,7 +133,6 @@ The API endpoints and their usage are documented below:
   <summary>Login</summary>
 
   - Endpoint: 
-    
         ```
         POST /api/auth/lpgin
         ```
