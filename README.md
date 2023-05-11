@@ -527,7 +527,8 @@ The API endpoints and their usage are documented below:
   <summary>Logout</summary>
     
     - Endpoint: 
-      ```http
+    
+    ```http
     POST /api/auth/logout
     ```
     
