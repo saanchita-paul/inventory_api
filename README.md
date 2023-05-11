@@ -104,7 +104,7 @@ The API endpoints and their usage are documented below:
   <summary>Registration</summary>
   - Endpoint:
     
-    ```http
+    ```
     POST /api/auth/register
     ```
     
