@@ -78,16 +78,20 @@ php artisan serve
 
 ## API Documentation
 
-## Authorization
+**Authorization**
 
-All API requests require the use of a generated API key. You can find your API key, or generate a new one, by navigating to the /settings endpoint, or clicking the “Settings” sidebar item.
+To ensure the security and authorization of API requests, all endpoints, except for the login and registration endpoints, require the use of a Bearer token. The Bearer token serves as a form of authentication.
 
-To authenticate an API request, you should provide your API key in the `Authorization` header.
+Upon successful login, the Bearer token can be obtained from the login response. This token should be included in the Authorization header of subsequent API requests.
 
-Alternatively, you may append the `api_key=[API_KEY]` as a GET parameter to authorize yourself to the API. But note that this is likely to leave traces in things like your history, if accessing the API through a browser.
+Alternatively, you have the option to include the Bearer token directly in the inventory collection. By doing so, there is no need to add the Authorization header for each API request.
+
+It is essential to include the Bearer token correctly to access the protected endpoints and perform authorized operations.
+
+Please ensure the Bearer token is provided in the appropriate manner to authenticate your API requests effectively and securely.
 
 ```http
-GET /api/campaigns/?api_key=12345678901234567890123456789012
+GET /api/auth/login
 ```
 
 | Key | Value |
