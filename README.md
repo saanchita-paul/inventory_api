@@ -73,7 +73,7 @@ php artisan db:seed
 php artisan serve
 ```
 
-- Visit http://localhost:8000 in your web browser to use the application.
+- Visit [localhost](http://localhost:8000) in your web browser to use the application.
 
 
 ## API Documentation
