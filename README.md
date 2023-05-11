@@ -150,11 +150,6 @@ The API endpoints and their usage are documented below:
   
   - Get User
   - Endpoint: POST api/user
-  - Headers:
-  ```
-    Authorization:Bearer 16|Mpa45CgTqXyZmc0Aix0BZPvfcCftqzDT3pFChJiM
-    Accept:application/json
-  ```
   - Response:
   ```
     {
@@ -536,11 +531,6 @@ The API endpoints and their usage are documented below:
     POST /api/auth/logout
     ```
     
-    - Headers:
-  ```
-    Authorization:Bearer 16|Mpa45CgTqXyZmc0Aix0BZPvfcCftqzDT3pFChJiM
-    Accept:application/json
-  ```
   - Response:
   ```
      {
