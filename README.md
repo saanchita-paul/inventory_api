@@ -257,7 +257,7 @@ The API endpoints and their usage are documented below:
     
   - Description:
       ```
-     This API endpoint allows the user to retrieve a list of all purchases from the database. The user can apply filters to the results by adding query parameters to the       endpoint. The per_page parameter specifies the number of purchases to be returned per page, and the search parameter allows the user to search for purchases by the         supplier name.
+     This API endpoint allows the user to retrieve a list of all purchases from the database. The user can apply filters to the results by adding query parameters to the       endpoint. The per_page parameter specifies the number of purchases to be returned per page, and the search parameter allows the user to search for purchases by the supplier name.
       ```
     
  </details>
@@ -275,7 +275,7 @@ The API endpoints and their usage are documented below:
     
   - Description:
       ```
-        This API endpoint allows the user to log out from the application. When invoked, the access token associated with the user will be invalidated and removed..
+        This API endpoint allows the user to log out from the application. When invoked, the access token associated with the user will be invalidated and removed.
       ```
     
  </details>
