@@ -96,7 +96,7 @@ POST /api/auth/login
 ### Header
 | Key | Value |
 | :--- | :--- | 
-| Authorization | Bearer 16|Mpa45CgTqXyZmc0Aix0BZPvfcCftqzDT3pFChJiM |
+| Authorization | Bearer <token> |
 
 The API endpoints and their usage are documented below:
 
