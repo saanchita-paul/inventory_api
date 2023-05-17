@@ -90,8 +90,6 @@ It is essential to include the Bearer token correctly to access the protected en
 
 Please ensure the Bearer token is provided in the appropriate manner to authenticate your API requests effectively and securely.
 
-**Currently, the API endpoints do not possess authorization requirements, allowing access without the presence of an authentication system.**
-
 ```http
 POST /api/auth/login
 ```
@@ -158,72 +156,72 @@ The API endpoints and their usage are documented below:
  
  
  <details>
-  <summary>Create Post</summary>
+  <summary>Add Product</summary>
     
   - Endpoint:
     
     ```http
-    POST /api/create-post
+    POST /api/product/create
     
     ```
     
   - Description:
       ```
-      This API endpoint allows user to create post with or without media
+      This API endpoint allows the addition of a new product to the database. With each product one stock will be added and by default stock quantity is zero
       ```
     
  </details>
 
 
  <details>
-  <summary>Post List</summary>
+  <summary>Product List</summary>
     
   - Endpoint:
     
     ```http
-    GET /api/post-list?per_page={per_page}&search={search}
+    GET /api/product/list?per_page={per_page}&search={search}
     
     ```
     
   - Description:
       ```
-      This API endpoint allows the user to retrieve a list of all posts with image from the database. The user can apply filters to the results by adding query parameters to the endpoint. The per_page parameter specifies the number of posts to be returned per page, and the search parameter allows the user to search for posts by their title.
+      This API endpoint allows the user to retrieve a list of all products from the database. The user can apply filters to the results by adding query parameters to the endpoint. The per_page parameter specifies the number of products to be returned per page, and the search parameter allows the user to search for products by their name.
       ```
     
  </details>
 
 
   <details>
-  <summary>Post Details</summary>
+  <summary>Product Details</summary>
     
   - Endpoint:
     
     ```http
-    GET /api/posts/{postid}
+    GET /api/product/view/{id}
     
     ```
     
   - Description:
       ```
-      This API endpoint allows the user to retrieve the details of a specific post based on its ID with image, comments, like count of each post and liked by.
+      This API endpoint allows the user to retrieve the details of a specific product based on its ID.
       ```
     
  </details>
 
 
   <details>
-  <summary>Add Like To A Post</summary>
+  <summary>Category List</summary>
     
   - Endpoint:
     
     ```http
-    GET /api/posts/{postid}/like
+    GET /api/product/categories
     
     ```
     
   - Description:
       ```
-      This API endpoint allows the user to add like to a post
+      This API endpoint allows the user to retrieve a list of all categories of products available.
       ```
     
  </details>
@@ -231,18 +229,18 @@ The API endpoints and their usage are documented below:
  
  
  <details>
-  <summary>Add Comment On A Post</summary>
+  <summary>Add Purchase</summary>
     
   - Endpoint:
     
     ```http
-    POST /api/posts/{postid}/comment
+    POST /api/purchase/create
     
     ```
     
   - Description:
       ```
-      This API endpoint allows the user to add a comment on a post
+      This API endpoint allows the user to add a purchase record, updating the stock quantity and price of multiple products.
       ```
     
  </details>
@@ -250,35 +248,18 @@ The API endpoints and their usage are documented below:
 
 
 <details>
-  <summary>Get Comments</summary>
+  <summary>Purchase List</summary>
     
   - Endpoint:
     
     ```http
-    GET /api/posts/{postid}/comments
+    POST /api/purchase/list?per_page={per_page}&search={search}
     
     ```
     
   - Description:
       ```
-     This API endpoint allows the user to retrieve comments list with pagination of the post
-      ```
-    
- </details>
- 
- <details>
-  <summary>Like A Comment</summary>
-    
-  - Endpoint:
-    
-    ```http
-    POST /api/comments/{commentid}/like 
-    
-    ```
-    
-  - Description:
-      ```
-     This API endpoint allows the user to like a comment
+     This API endpoint allows the user to retrieve a list of all purchases from the database. The user can apply filters to the results by adding query parameters to the       endpoint. The per_page parameter specifies the number of purchases to be returned per page, and the search parameter allows the user to search for purchases by the supplier name.
       ```
     
  </details>
